@@ -2,6 +2,7 @@
 pytesseract==0.2.6
 typing==3.7.4.3
 python-multipart==0.0.5
+pdf2image
 
 # Tables
 numpy==1.22.0
