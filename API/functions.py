@@ -1,4 +1,5 @@
 import os 
+import json
 import pandas as pd
 import API.text_extract as tx
 
@@ -54,14 +55,14 @@ def get_content(file_path: str) -> dict:
         xl = pd.ExcelFile(file_path)        
         for i in xl.sheet_names:
             try: 
-                data['tables'].append(pd.read_excel(file_path, i).to_dict())
+                data['tables'].append(json.dumps(pd.read_excel(file_path, i).to_dict()))
             except:
                 print('No se logro gargar la hoja %s' %i)
     
     # si es un csv
     elif '.csv' in file_path:
         try: 
-            data['tables'].append(pd.read_csv(file_path).to_dict())
+            data['tables'].append(json.dumps(pd.read_csv(file_path).to_dict()))
         except:
             f = open(file_path, "r")
             data['text'] = [l.split(',') for l in f.readlines()[0].split('\n')]
