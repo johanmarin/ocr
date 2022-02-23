@@ -20,8 +20,5 @@ async def upload(files: List[UploadFile] = File(...)):
     contents = await file.read()
     filepath =os.path.join(PATH ,file.filename)
     f_api.save_file(filepath, contents)
-    resp[file.filename] = f_api.text_from_image(filepath)
+    resp[file.filename] = f_api.get_content(filepath)
   return resp
-
-  #text = f_api.text_from_image(file,PATH)
-  #return {"OCR": text}
