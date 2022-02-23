@@ -11,7 +11,7 @@ RUN apt-get update  \
 # install camelot requeriments
 RUN apt-get update \
     && apt-get install --assume-yes ghostscript \
-    apt-get install libgl1 -y \
+    && apt-get install libgl1 -y \
     && apt-get install poppler-utils -y \
     && rm -rf /var/lib/apt/lists/*
 
